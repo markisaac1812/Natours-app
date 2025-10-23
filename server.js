@@ -6,7 +6,7 @@ dotenv.config({ path: './config.env' });
 // handle sync errors
 process.on("uncaughtException",err=>{
   console.log("unhandled exception Shutting Down");
-  console.log(err.name,err.message);
+  //console.log(err.name,err.message);
   process.exit(1);
 });
 
@@ -26,7 +26,7 @@ const server = app.listen(port, () => {
 
 // errors outsdie express
 process.on('unhandledRejection', (err) => {
-  console.log(err.name, err.message);
+  //console.log(err.name, err.message);
   server.close(()=>{
     process.exit(1);
   });

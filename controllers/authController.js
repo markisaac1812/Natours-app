@@ -46,7 +46,6 @@ exports.signUp = catchAsync(async (req, res, next) => {
     role: req.body.role
   });
   const url = `${req.protocol}://${req.get('host')}/me`; // req.protocol: http wla https, req.host: ya3ni local host wla 3000 wla eh
-  console.log(url);
   await new Email(newUser, url).sendWelcome();
 
   // we can do this instead of the 5 lines below which is better:  createSendToken(newUser,201,res);

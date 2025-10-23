@@ -16,7 +16,7 @@ export const bookTour = async (tourID) => {
   try {
     // 1) Get checkout session from API
     const session = await axios(`/api/v1/bookings/checkout-session/${tourID}`);
-    console.log(session);
+
 
     // 2) Create checkout form + charge credit card
     const stripe = getStripe();
@@ -28,9 +28,8 @@ export const bookTour = async (tourID) => {
       showAlert('error', 'Stripe is not loaded. Please refresh the page.');
     }
   } catch (err) {
-    console.log(err);
     showAlert('error', err);
   }
 };
 
-//"https://js.stripe.com/clover/stripe.js"
+

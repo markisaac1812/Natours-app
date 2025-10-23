@@ -15,6 +15,7 @@ const NoSQLSantize = require('./utils/NoSQLSantize');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const bookingRouter = require('./routes/bookingRoutes');
+const compression = require('compression');
 
 const app = express();
 
@@ -70,9 +71,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(compression());
+
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  console.log(req.cookies);
+  //console.log(req.cookies);
   next();
 });
 
