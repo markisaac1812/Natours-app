@@ -3,9 +3,7 @@ import axios from 'axios';
 import { showAlert } from './alerts';
 
 export const signup = async (name, email, password, passwordConfirm) => {
-  console.log('Signup function called with:', { name, email, password, passwordConfirm });
   try {
-    console.log('Making API call to /api/v1/users/signup');
     const res = await axios({
       method: 'POST',
       url: '/api/v1/users/signup',
@@ -17,7 +15,6 @@ export const signup = async (name, email, password, passwordConfirm) => {
       },
       withCredentials: true
     });
-    console.log('API response:', res.data);
     if (res.data.status === 'Success') {
       showAlert('Success', 'signed up successful');
       window.setTimeout(() => {

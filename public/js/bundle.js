@@ -12814,15 +12814,8 @@ var signup = exports.signup = /*#__PURE__*/function () {
     return _regenerator().w(function (_context) {
       while (1) switch (_context.p = _context.n) {
         case 0:
-          console.log('Signup function called with:', {
-            name: name,
-            email: email,
-            password: password,
-            passwordConfirm: passwordConfirm
-          });
-          _context.p = 1;
-          console.log('Making API call to /api/v1/users/signup');
-          _context.n = 2;
+          _context.p = 0;
+          _context.n = 1;
           return (0, _axios.default)({
             method: 'POST',
             url: '/api/v1/users/signup',
@@ -12834,19 +12827,18 @@ var signup = exports.signup = /*#__PURE__*/function () {
             },
             withCredentials: true
           });
-        case 2:
+        case 1:
           res = _context.v;
-          console.log('API response:', res.data);
           if (res.data.status === 'Success') {
             (0, _alerts.showAlert)('Success', 'signed up successful');
             window.setTimeout(function () {
               location.assign('/');
             }, 1500);
           }
-          _context.n = 4;
+          _context.n = 3;
           break;
-        case 3:
-          _context.p = 3;
+        case 2:
+          _context.p = 2;
           _t = _context.v;
           console.error('Signup error:', _t);
           console.error('Error response:', _t.response);
@@ -12855,10 +12847,10 @@ var signup = exports.signup = /*#__PURE__*/function () {
           } else {
             (0, _alerts.showAlert)('error', 'Network error or server is not responding');
           }
-        case 4:
+        case 3:
           return _context.a(2);
       }
-    }, _callee, null, [[1, 3]]);
+    }, _callee, null, [[0, 2]]);
   }));
   return function signup(_x, _x2, _x3, _x4) {
     return _ref.apply(this, arguments);
@@ -13135,24 +13127,14 @@ if (loginForm) {
   });
 }
 if (signupBtn) {
-  console.log('Signup form found, adding event listener');
   signupBtn.addEventListener('submit', function (e) {
-    console.log('Signup form submitted');
     e.preventDefault();
     var email = document.getElementById('email').value;
     var name = document.getElementById('name').value;
     var password = document.getElementById('password').value;
     var passwordConfirm = document.getElementById('passwordConfirm').value;
-    console.log('Form data:', {
-      name: name,
-      email: email,
-      password: password,
-      passwordConfirm: passwordConfirm
-    });
     (0, _signup.signup)(name, email, password, passwordConfirm);
   });
-} else {
-  console.log('Signup form not found');
 }
 if (logOutBtn) {
   logOutBtn.addEventListener('click', _login.logout);

@@ -24,20 +24,15 @@ if (loginForm) {
 }
 
 if (signupBtn) {
-  console.log('Signup form found, adding event listener');
   signupBtn.addEventListener('submit', function (e) {
-    console.log('Signup form submitted');
     e.preventDefault();
     const email = document.getElementById('email').value;
     const name = document.getElementById('name').value;
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('passwordConfirm').value;
-    console.log('Form data:', { name, email, password, passwordConfirm });
     signup(name, email, password, passwordConfirm);
   });
-} else {
-  console.log('Signup form not found');
-}
+} 
 
 if (logOutBtn) {
   logOutBtn.addEventListener('click', logout);
