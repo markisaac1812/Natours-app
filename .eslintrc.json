@@ -1,0 +1,26 @@
+{
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2021": true
+  }
+  // "extends": ["airbnb-base", "prettier"],
+  // "plugins": ["prettier"],
+  // "parserOptions": {
+  //   "ecmaVersion": "latest"
+  // },
+  // "rules": {
+  //   "prettier/prettier": "error", 
+  //   "no-console": "warn",
+  //   "no-unused-vars": [
+  //     "warn",
+  //     {
+  //       "argsIgnorePattern": "^_|req|res|next|val"
+  //     }
+  //   ],
+  //   "func-names": "off",
+  //   "no-underscore-dangle": "off",
+  //   "consistent-return": "off",
+  //   "class-methods-use-this": "off"
+  // }
+}
