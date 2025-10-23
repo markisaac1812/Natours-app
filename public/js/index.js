@@ -1,10 +1,12 @@
 import '@babel/polyfill';
 import { login, logout } from './login';
+import { signup } from './signup';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 
 const loginForm = document.querySelector('.form--login');
 const logOutBtn = document.querySelector('.nav__el--logout');
+const signupBtn = document.querySelector('.form--signup');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
@@ -19,6 +21,22 @@ if (loginForm) {
 
     login(email, password);
   });
+}
+
+if (signupBtn) {
+  console.log('Signup form found, adding event listener');
+  signupBtn.addEventListener('submit', function (e) {
+    console.log('Signup form submitted');
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const name = document.getElementById('name').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
+    console.log('Form data:', { name, email, password, passwordConfirm });
+    signup(name, email, password, passwordConfirm);
+  });
+} else {
+  console.log('Signup form not found');
 }
 
 if (logOutBtn) {
@@ -45,9 +63,9 @@ if (userDataForm) {
   userDataForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const form = new FormData();
-    form.append('name',document.getElementById('name').value)
-    form.append('email',userDataForm.querySelector('#email').value);
-    form.append('photo',document.getElementById('photo').files[0]);
+    form.append('name', document.getElementById('name').value);
+    form.append('email', userDataForm.querySelector('#email').value);
+    form.append('photo', document.getElementById('photo').files[0]);
     //console.log(form);
     updateSettings(form, 'data');
   });
@@ -70,10 +88,10 @@ if (userPasswordForm) {
   });
 }
 
-if(bookBtn){
-  bookBtn.addEventListener('click',e=>{
+if (bookBtn) {
+  bookBtn.addEventListener('click', (e) => {
     e.target.textContent = 'Processing';
-    const {tourId} = e.target.dataset;
+    const { tourId } = e.target.dataset;
     bookTour(tourId);
   });
 }
